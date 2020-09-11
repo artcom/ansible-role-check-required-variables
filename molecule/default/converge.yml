@@ -1,0 +1,21 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - block:
+        - include_role:
+            name: check-required-variables
+          vars:
+            required: "defined"
+            required_vars:
+              required: "{{ required }}"
+      rescue:
+        - name: rescue failed role
+          file:
+            path: /tmp/failed
+            state: touch
+            mode: "0644"
+            modification_time: preserve
+            access_time: preserve

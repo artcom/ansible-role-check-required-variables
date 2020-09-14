@@ -15,6 +15,11 @@ required_vars:
   var1_name: "{{ var1_name }}"
   var2_name: "{{ var2_name }}"
 ```
+Add `no_log` option for `silent_vars`:
+```yaml
+silent_vars:
+  - "var1_name"
+```
 
 ## Dependencies
 None.

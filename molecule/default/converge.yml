@@ -9,8 +9,12 @@
             name: check-required-variables
           vars:
             required: "defined"
+            required2: "also defined"
             required_vars:
               required: "{{ required }}"
+              required2: "{{ required2 }}"
+            silent_vars:
+              - "required2"
       rescue:
         - name: rescue failed role
           file:

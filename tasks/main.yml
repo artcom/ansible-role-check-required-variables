@@ -3,6 +3,7 @@
   fail:
     msg: 'variable {{ required_var.key }} not defined'
   when: not required_var.value
+  when: required_var.value is none or required_var.value is not defined
   loop: "{{ required_vars | dict2items }}"
   loop_control:
     loop_var: required_var

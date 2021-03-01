@@ -4,16 +4,16 @@
   vars:
     ansible_python_interpreter: /usr/bin/python3
   tasks:
-    - block:
-        - include_role:
+    - name: check that role fails when required variable is not defined
+      block:
+        - ansible.builtin.include_role:
             name: check-required-variables
           vars:
-            required: null
             required_vars:
               required: "{{ required }}"
       rescue:
         - name: rescue failed role
-          file:
+          ansible.builtin.file:
             path: /tmp/failed
             state: touch
             mode: "0644"

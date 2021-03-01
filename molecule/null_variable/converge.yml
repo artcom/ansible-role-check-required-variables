@@ -4,17 +4,14 @@
   vars:
     ansible_python_interpreter: /usr/bin/python3
   tasks:
-    - block:
+    - name: check that role fails when required variable is null
+      block:
         - ansible.builtin.include_role:
             name: check-required-variables
           vars:
-            required: "defined"
-            required2: "also defined"
+            required: null
             required_vars:
               required: "{{ required }}"
-              required2: "{{ required2 }}"
-            silent_vars:
-              - "required2"
       rescue:
         - name: rescue failed role
           ansible.builtin.file:

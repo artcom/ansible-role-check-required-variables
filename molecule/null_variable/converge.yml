@@ -6,12 +6,14 @@
   tasks:
     - name: check that role fails when required variable is null
       block:
-        - ansible.builtin.include_role:
+        - name: run role
+          ansible.builtin.include_role:
             name: check-required-variables
           vars:
             required: null
             required_vars:
               required: "{{ required }}"
+
       rescue:
         - name: rescue failed role
           ansible.builtin.file:

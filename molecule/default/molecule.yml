@@ -4,7 +4,7 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: alpine
+  - name: check-required-variable-alpine-default
     image: alpine:3
 provisioner:
   name: ansible

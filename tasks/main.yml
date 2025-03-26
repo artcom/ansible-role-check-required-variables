@@ -1,4 +1,9 @@
 ---
+- name: check required variables dict
+  ansible.builtin.debug:
+    msg: "{{ required_vars }}"
+  when: required_vars is not defined
+
 - name: check required variables
   ansible.builtin.fail:
     msg: "variable {{ required_var.key }} not defined"
